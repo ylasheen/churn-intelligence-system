@@ -47,6 +47,7 @@ churn-intelligence-system/
 ├── config/config.yaml
 ├── tests/
 ├── api/main.py           # FastAPI serving layer
+├── dashboard/app.py      # Streamlit business dashboard
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
@@ -71,7 +72,14 @@ python src/models/evaluate_model.py
 
 # 5. Serve predictions via API
 uvicorn api.main:app --reload
+
+# 6. (Optional) Launch the interactive business dashboard
+streamlit run dashboard/app.py
 ```
+
+The dashboard (`dashboard/app.py`) gives a non-technical view: KPI overview, a live
+"predict a customer" form, the ranked retention priority list, and EDA insights —
+no code or API calls required to explore the model.
 
 ## Dataset note
 The tabular structure mirrors the well-known IBM/Kaggle **Telco Customer Churn** schema
@@ -86,5 +94,3 @@ Python, Pandas, scikit-learn, XGBoost, NLTK/TextBlob (NLP), SHAP, MLflow, FastAP
 
 ## Author
 **Youssef Lasheen** — AI & Machine Learning Engineer
-"# churn-intelligence-system" 
-"# churn-intelligence-system" 
