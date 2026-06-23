@@ -1,0 +1,32 @@
+project:
+  name: churn-intelligence-system
+  author: Youssef Lasheen
+  version: 1.0.0
+
+data:
+  raw_path: data/raw/telco_churn.csv
+  tickets_path: data/external/support_tickets.csv
+  processed_path: data/processed/churn_features.csv
+  n_samples: 5000
+  random_state: 42
+
+model:
+  target_column: churn
+  test_size: 0.2
+  random_state: 42
+  candidates:
+    - logistic_regression
+    - random_forest
+    - xgboost
+    - voting_ensemble
+  saved_model_path: models/saved_models/churn_model.pkl
+  encoder_path: models/artifacts/encoders.pkl
+
+mlflow:
+  experiment_name: churn-intelligence-system
+  tracking_uri: sqlite:///mlflow_runs/mlflow.db
+
+business:
+  avg_monthly_revenue_per_customer: 65
+  retention_campaign_cost_per_customer: 12
+  campaign_success_rate: 0.35
