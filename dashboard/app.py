@@ -31,338 +31,75 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap');
 
-/* ── Global Reset ── */
-html, body, [class*="css"] {
-    font-family: 'Inter', sans-serif;
-}
+html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+.stApp { background: #0a0a0f; }
 
-.stApp {
-    background: #0a0a0f;
-}
+[data-testid="stSidebar"] { background: #0f0f1a !important; border-right: 1px solid #1e1e2e; }
+[data-testid="stSidebar"] .stRadio label { color: #8888aa !important; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+[data-testid="stSidebar"] .stRadio label:hover { color: #ffffff !important; }
 
-/* ── Sidebar ── */
-[data-testid="stSidebar"] {
-    background: #0f0f1a !important;
-    border-right: 1px solid #1e1e2e;
-}
-
-[data-testid="stSidebar"] .stRadio label {
-    color: #8888aa !important;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
-}
-
-[data-testid="stSidebar"] .stRadio label:hover {
-    color: #ffffff !important;
-}
-
-/* ── Hero Banner ── */
 .hero-banner {
     background: linear-gradient(135deg, #0d0d20 0%, #1a0a2e 40%, #0d1a2e 100%);
-    border: 1px solid #2a1a4e;
-    border-radius: 16px;
-    padding: 40px 48px;
-    margin-bottom: 32px;
-    position: relative;
-    overflow: hidden;
+    border: 1px solid #2a1a4e; border-radius: 16px; padding: 40px 48px;
+    margin-bottom: 32px; position: relative; overflow: hidden;
 }
+.hero-banner::before { content:''; position:absolute; top:-50%; right:-10%; width:400px; height:400px;
+    background: radial-gradient(circle, rgba(120,60,255,0.15) 0%, transparent 70%); pointer-events:none; }
+.hero-banner::after { content:''; position:absolute; bottom:-30%; left:20%; width:300px; height:300px;
+    background: radial-gradient(circle, rgba(0,180,255,0.08) 0%, transparent 70%); pointer-events:none; }
+.hero-title { font-size:36px; font-weight:800; color:#ffffff; letter-spacing:-0.03em; line-height:1.1; margin:0 0 8px 0; }
+.hero-title span { background: linear-gradient(90deg, #7c3aed, #06b6d4); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero-subtitle { font-size:14px; color:#6666aa; font-weight:400; margin:0; letter-spacing:0.01em; }
+.hero-badge { display:inline-block; background:rgba(124,58,237,0.15); border:1px solid rgba(124,58,237,0.3);
+    color:#a78bfa; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    padding:4px 12px; border-radius:100px; margin-bottom:16px; }
 
-.hero-banner::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(120, 60, 255, 0.15) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.hero-banner::after {
-    content: '';
-    position: absolute;
-    bottom: -30%;
-    left: 20%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(0, 180, 255, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.hero-title {
-    font-size: 36px;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin: 0 0 8px 0;
-}
-
-.hero-title span {
-    background: linear-gradient(90deg, #7c3aed, #06b6d4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-    font-size: 14px;
-    color: #6666aa;
-    font-weight: 400;
-    margin: 0;
-    letter-spacing: 0.01em;
-}
-
-.hero-badge {
-    display: inline-block;
-    background: rgba(124, 58, 237, 0.15);
-    border: 1px solid rgba(124, 58, 237, 0.3);
-    color: #a78bfa;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 100px;
-    margin-bottom: 16px;
-}
-
-/* ── KPI Cards ── */
-.kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 32px;
-}
-
-.kpi-card {
-    background: #0f0f1a;
-    border: 1px solid #1e1e2e;
-    border-radius: 12px;
-    padding: 24px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-}
-
-.kpi-card:hover {
-    border-color: #3a3a5e;
-    transform: translateY(-2px);
-}
-
-.kpi-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-}
-
+.kpi-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; margin-bottom:32px; }
+.kpi-card { background:#0f0f1a; border:1px solid #1e1e2e; border-radius:12px; padding:24px;
+    position:relative; overflow:hidden; transition: border-color 0.2s, transform 0.2s; }
+.kpi-card:hover { border-color:#3a3a5e; transform:translateY(-2px); }
+.kpi-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
 .kpi-card.purple::before { background: linear-gradient(90deg, #7c3aed, #a855f7); }
 .kpi-card.cyan::before { background: linear-gradient(90deg, #06b6d4, #0284c7); }
 .kpi-card.red::before { background: linear-gradient(90deg, #ef4444, #dc2626); }
 .kpi-card.green::before { background: linear-gradient(90deg, #10b981, #059669); }
+.kpi-label { font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#4444aa; margin-bottom:8px; }
+.kpi-value { font-size:28px; font-weight:800; color:#ffffff; letter-spacing:-0.02em; line-height:1; margin-bottom:4px; font-family:'JetBrains Mono', monospace; }
+.kpi-value.purple { color:#a78bfa; } .kpi-value.cyan { color:#22d3ee; } .kpi-value.red { color:#f87171; } .kpi-value.green { color:#34d399; }
+.kpi-delta { font-size:12px; color:#4444aa; font-weight:400; }
 
-.kpi-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #4444aa;
-    margin-bottom: 8px;
-}
+.section-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.section-title { font-size:16px; font-weight:700; color:#ffffff; letter-spacing:-0.01em; }
+.section-line { flex:1; height:1px; background:#1e1e2e; }
+.section-tag { font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#4444aa;
+    background:#0f0f1a; border:1px solid #1e1e2e; padding:3px 10px; border-radius:100px; }
 
-.kpi-value {
-    font-size: 28px;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-bottom: 4px;
-    font-family: 'JetBrains Mono', monospace;
-}
+.risk-high { color:#f87171; font-weight:700; font-size:13px; }
+.risk-med  { color:#fbbf24; font-weight:700; font-size:13px; }
+.risk-low  { color:#34d399; font-weight:700; font-size:13px; }
 
-.kpi-value.purple { color: #a78bfa; }
-.kpi-value.cyan { color: #22d3ee; }
-.kpi-value.red { color: #f87171; }
-.kpi-value.green { color: #34d399; }
+.insight-box { background:#0f0f1a; border:1px solid #1e1e2e; border-radius:12px; padding:20px; margin-bottom:12px; }
+.insight-title { font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#a78bfa; margin-bottom:6px; }
+.insight-text { font-size:13px; color:#8888aa; line-height:1.6; }
 
-.kpi-delta {
-    font-size: 12px;
-    color: #4444aa;
-    font-weight: 400;
-}
-
-/* ── Section Headers ── */
-.section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.section-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-}
-
-.section-line {
-    flex: 1;
-    height: 1px;
-    background: #1e1e2e;
-}
-
-.section-tag {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #4444aa;
-    background: #0f0f1a;
-    border: 1px solid #1e1e2e;
-    padding: 3px 10px;
-    border-radius: 100px;
-}
-
-/* ── Risk Badge ── */
-.risk-high { color: #f87171; font-weight: 700; font-size: 13px; }
-.risk-med  { color: #fbbf24; font-weight: 700; font-size: 13px; }
-.risk-low  { color: #34d399; font-weight: 700; font-size: 13px; }
-
-/* ── Predict Form ── */
-.predict-section {
-    background: #0f0f1a;
-    border: 1px solid #1e1e2e;
-    border-radius: 16px;
-    padding: 32px;
-    margin-bottom: 24px;
-}
-
-.predict-result {
-    background: linear-gradient(135deg, #0d0d20, #1a0a2e);
-    border: 1px solid #2a1a4e;
-    border-radius: 16px;
-    padding: 32px;
-    text-align: center;
-}
-
-.prob-ring {
-    font-size: 52px;
-    font-weight: 900;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: -0.03em;
-    line-height: 1;
-}
-
-.prob-label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #6666aa;
-    margin-top: 8px;
-}
-
-/* ── Insight Cards ── */
-.insight-box {
-    background: #0f0f1a;
-    border: 1px solid #1e1e2e;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 12px;
-}
-
-.insight-title {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #a78bfa;
-    margin-bottom: 6px;
-}
-
-.insight-text {
-    font-size: 13px;
-    color: #8888aa;
-    line-height: 1.6;
-}
-
-/* ── Streamlit overrides ── */
 .stSlider > div > div > div { background: #7c3aed !important; }
-.stSelectbox > div > div { 
-    background: #0f0f1a !important; 
-    border-color: #1e1e2e !important;
-    color: #ffffff !important;
-}
-.stNumberInput > div > div > input { 
-    background: #0f0f1a !important; 
-    border-color: #1e1e2e !important;
-    color: #ffffff !important;
-}
-.stDataFrame { border-radius: 12px; overflow: hidden; }
+.stSelectbox > div > div { background:#0f0f1a !important; border-color:#1e1e2e !important; color:#ffffff !important; }
+.stNumberInput > div > div > input { background:#0f0f1a !important; border-color:#1e1e2e !important; color:#ffffff !important; }
+.stDataFrame { border-radius:12px; overflow:hidden; }
 
-div[data-testid="stMetricValue"] {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 28px !important;
-    font-weight: 800 !important;
-    color: #ffffff !important;
-}
+div[data-testid="stMetricValue"] { font-family:'JetBrains Mono', monospace; font-size:28px !important; font-weight:800 !important; color:#ffffff !important; }
+div[data-testid="stMetricLabel"] { font-size:11px !important; font-weight:600 !important; letter-spacing:0.08em !important; text-transform:uppercase !important; color:#4444aa !important; }
 
-div[data-testid="stMetricLabel"] {
-    font-size: 11px !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
-    color: #4444aa !important;
-}
+.stButton button { background: linear-gradient(135deg, #7c3aed, #6d28d9) !important; color:white !important; border:none !important;
+    border-radius:8px !important; font-weight:600 !important; font-size:14px !important; padding:12px 24px !important; width:100% !important; transition: opacity 0.2s !important; }
+.stButton button:hover { opacity:0.85 !important; }
+.stDownloadButton button { background:#1e1e2e !important; color:#a78bfa !important; border:1px solid #2a2a4e !important; }
 
-.stButton button {
-    background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    padding: 12px 24px !important;
-    width: 100% !important;
-    transition: opacity 0.2s !important;
-}
+.stTabs [data-baseweb="tab-list"] { background:#0f0f1a; border-radius:10px; padding:4px; gap:4px; }
+.stTabs [data-baseweb="tab"] { background:transparent; color:#6666aa; border-radius:7px; font-weight:600; font-size:13px; }
+.stTabs [aria-selected="true"] { background:#1e1e2e !important; color:#ffffff !important; }
 
-.stButton button:hover { opacity: 0.85 !important; }
-
-/* ── Download button ── */
-.stDownloadButton button {
-    background: #1e1e2e !important;
-    color: #a78bfa !important;
-    border: 1px solid #2a2a4e !important;
-    border-radius: 8px !important;
-}
-
-/* ── Tabs ── */
-.stTabs [data-baseweb="tab-list"] {
-    background: #0f0f1a;
-    border-radius: 10px;
-    padding: 4px;
-    gap: 4px;
-}
-
-.stTabs [data-baseweb="tab"] {
-    background: transparent;
-    color: #6666aa;
-    border-radius: 7px;
-    font-weight: 600;
-    font-size: 13px;
-}
-
-.stTabs [aria-selected="true"] {
-    background: #1e1e2e !important;
-    color: #ffffff !important;
-}
-
-/* divider */
-hr { border-color: #1e1e2e !important; }
+hr { border-color:#1e1e2e !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -386,22 +123,34 @@ model, feature_cols, model_name = load_model_bundle()
 df = load_processed_data()
 encoders = load_encoders()
 
-# precompute
 churn_probs = model.predict_proba(df[feature_cols])[:, 1]
 retention_df = business_retention_report(df, model, feature_cols, config)
 total_savings = retention_df[retention_df["campaign_expected_savings"] > 0]["campaign_expected_savings"].sum()
 high_risk_count = (churn_probs >= 0.6).sum()
 churn_rate = df["churn"].mean()
 
-# ─── PLOTLY THEME ─────────────────────────────────────────────────────────────
+# ─── PLOTLY THEME ────────────────────────────────────────────────────────────
+# IMPORTANT: xaxis/yaxis are intentionally NOT in this dict. Several charts
+# below pass their own xaxis_title/yaxis_title or explicit xaxis=/yaxis= to
+# fig.update_layout(). If those keys also existed inside **PLOT_THEME, Python
+# would raise "got multiple values for keyword argument" the moment both are
+# passed to the same call. Grid/line styling is applied separately via
+# apply_theme() so there is never a collision.
 PLOT_THEME = dict(
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="rgba(0,0,0,0)",
     font=dict(family="Inter", color="#8888aa", size=12),
-    xaxis=dict(gridcolor="#1e1e2e", linecolor="#1e1e2e", tickcolor="#1e1e2e"),
-    yaxis=dict(gridcolor="#1e1e2e", linecolor="#1e1e2e", tickcolor="#1e1e2e"),
     margin=dict(l=16, r=16, t=40, b=16),
 )
+
+
+def apply_theme(fig):
+    """Apply consistent grid/axis styling without colliding with any
+    explicit xaxis=/yaxis= kwargs used elsewhere on the same figure."""
+    fig.update_xaxes(gridcolor="#1e1e2e", linecolor="#1e1e2e", tickcolor="#1e1e2e")
+    fig.update_yaxes(gridcolor="#1e1e2e", linecolor="#1e1e2e", tickcolor="#1e1e2e")
+    return fig
+
 
 PURPLE = "#7c3aed"
 CYAN   = "#06b6d4"
@@ -427,7 +176,6 @@ with st.sidebar:
 
     st.markdown("<hr style='border-color:#1e1e2e; margin: 20px 0;'>", unsafe_allow_html=True)
 
-    # Live stats in sidebar
     st.markdown(f"""
     <div style="background:#0f0f1a; border:1px solid #1e1e2e; border-radius:10px; padding:16px;">
         <div style="font-size:10px; font-weight:700; letter-spacing:0.1em; color:#4444aa; text-transform:uppercase; margin-bottom:12px;">LIVE STATS</div>
@@ -450,24 +198,22 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 # PAGE: OVERVIEW
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 if "Overview" in page:
 
-    # Hero
     st.markdown(f"""
     <div class="hero-banner">
         <div class="hero-badge">AI-POWERED CUSTOMER INTELLIGENCE</div>
         <div class="hero-title">Customer <span>Churn Intelligence</span> System</div>
         <div class="hero-subtitle">
-            End-to-end ML pipeline · Tabular + NLP features · SHAP explainability · 
+            End-to-end ML pipeline · Tabular + NLP features · SHAP explainability ·
             Real-time predictions · Business impact quantification
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # KPI Cards
     st.markdown(f"""
     <div class="kpi-grid">
         <div class="kpi-card purple">
@@ -493,7 +239,6 @@ if "Overview" in page:
     </div>
     """, unsafe_allow_html=True)
 
-    # Charts row 1
     col1, col2 = st.columns([1, 2], gap="medium")
 
     with col1:
@@ -508,9 +253,7 @@ if "Overview" in page:
         stayed = len(df[df["churn"] == 0])
         churned = len(df[df["churn"] == 1])
         fig = go.Figure(go.Pie(
-            labels=["Stayed", "Churned"],
-            values=[stayed, churned],
-            hole=0.65,
+            labels=["Stayed", "Churned"], values=[stayed, churned], hole=0.65,
             marker=dict(colors=[CYAN, RED], line=dict(color="#0a0a0f", width=3)),
             textinfo="none",
             hovertemplate="<b>%{label}</b><br>%{value:,} customers<br>%{percent}<extra></extra>",
@@ -521,8 +264,8 @@ if "Overview" in page:
             font=dict(size=18, color="#ffffff", family="JetBrains Mono"),
         )
         fig.update_layout(**PLOT_THEME, showlegend=True,
-            legend=dict(orientation="h", y=-0.1, font=dict(color="#8888aa")),
-            height=280)
+            legend=dict(orientation="h", y=-0.1, font=dict(color="#8888aa")), height=280)
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     with col2:
@@ -550,9 +293,9 @@ if "Overview" in page:
         fig.update_layout(**PLOT_THEME, barmode="overlay", height=280,
             legend=dict(orientation="h", y=1.1, font=dict(color="#8888aa")),
             xaxis_title="Churn Probability", yaxis_title="Count")
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
-    # Charts row 2
     col3, col4, col5 = st.columns(3, gap="medium")
 
     with col3:
@@ -567,10 +310,9 @@ if "Overview" in page:
         ct_agg = ct_data.groupby(["contract", "churn"]).size().reset_index(name="count")
         ct_agg["outcome"] = ct_agg["churn"].map({0: "Stayed", 1: "Churned"})
         fig = px.bar(ct_agg, x="contract", y="count", color="outcome",
-                     color_discrete_map={"Stayed": CYAN, "Churned": RED},
-                     barmode="group")
-        fig.update_layout(**PLOT_THEME, height=240, showlegend=False,
-                          xaxis_title="", yaxis_title="")
+                     color_discrete_map={"Stayed": CYAN, "Churned": RED}, barmode="group")
+        fig.update_layout(**PLOT_THEME, height=240, showlegend=False, xaxis_title="", yaxis_title="")
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     with col4:
@@ -582,13 +324,10 @@ if "Overview" in page:
         """, unsafe_allow_html=True)
         fig = go.Figure()
         for val, color, name in [(0, CYAN, "Stayed"), (1, RED, "Churned")]:
-            fig.add_trace(go.Box(
-                y=df[df["churn"] == val]["tenure"],
-                name=name, marker_color=color,
-                boxmean=True, line_color=color,
-            ))
-        fig.update_layout(**PLOT_THEME, height=240, showlegend=False,
-                          yaxis_title="Months")
+            fig.add_trace(go.Box(y=df[df["churn"] == val]["tenure"], name=name,
+                marker_color=color, boxmean=True, line_color=color))
+        fig.update_layout(**PLOT_THEME, height=240, showlegend=False, yaxis_title="Months")
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     with col5:
@@ -600,16 +339,12 @@ if "Overview" in page:
         """, unsafe_allow_html=True)
         fig = go.Figure()
         for val, color, name in [(0, CYAN, "Stayed"), (1, RED, "Churned")]:
-            fig.add_trace(go.Violin(
-                y=df[df["churn"] == val]["frustration_score"],
-                name=name, fillcolor=color, line_color=color,
-                opacity=0.7, box_visible=True, meanline_visible=True,
-            ))
-        fig.update_layout(**PLOT_THEME, height=240, showlegend=False,
-                          yaxis_title="Frustration Score")
+            fig.add_trace(go.Violin(y=df[df["churn"] == val]["frustration_score"], name=name,
+                fillcolor=color, line_color=color, opacity=0.7, box_visible=True, meanline_visible=True))
+        fig.update_layout(**PLOT_THEME, height=240, showlegend=False, yaxis_title="Frustration Score")
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
-    # Key Insights
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("""
     <div class="section-header">
@@ -624,7 +359,7 @@ if "Overview" in page:
         st.markdown(f"""
         <div class="insight-box">
             <div class="insight-title">⚠️ Month-to-Month Risk</div>
-            <div class="insight-text">Customers on month-to-month contracts churn at significantly higher rates. 
+            <div class="insight-text">Customers on month-to-month contracts churn at significantly higher rates.
             Migrating even 20% to annual contracts could save an estimated <b style="color:#a78bfa">${total_savings*0.3/1000:.0f}K/yr</b>.</div>
         </div>
         """, unsafe_allow_html=True)
@@ -632,7 +367,7 @@ if "Overview" in page:
         st.markdown(f"""
         <div class="insight-box">
             <div class="insight-title">📞 Support Tickets Signal</div>
-            <div class="insight-text">NLP analysis of support tickets shows frustrated customers 
+            <div class="insight-text">NLP analysis of support tickets shows frustrated customers
             are <b style="color:#f87171">2.4× more likely</b> to churn within 90 days of a negative interaction.</div>
         </div>
         """, unsafe_allow_html=True)
@@ -640,16 +375,16 @@ if "Overview" in page:
         st.markdown(f"""
         <div class="insight-box">
             <div class="insight-title">💰 ROI of Retention</div>
-            <div class="insight-text">At a 35% campaign success rate and $12/customer cost, 
-            targeting the top {high_risk_count:,} high-risk customers yields 
+            <div class="insight-text">At a 35% campaign success rate and $12/customer cost,
+            targeting the top {high_risk_count:,} high-risk customers yields
             <b style="color:#34d399">${total_savings/1000:.0f}K in annual savings</b>.</div>
         </div>
         """, unsafe_allow_html=True)
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 # PAGE: PREDICT CUSTOMER
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 elif "Predict" in page:
     st.markdown("""
     <div style="margin-bottom:32px;">
@@ -729,32 +464,24 @@ elif "Predict" in page:
         expected_revenue = proba * monthly_charges * 12
         campaign_roi = max(0, proba * 0.35 * monthly_charges * 12 - 12)
 
-        # Results
         r1, r2, r3 = st.columns([2, 1, 1], gap="medium")
 
         with r1:
-            # Gauge chart
             fig = go.Figure(go.Indicator(
-                mode="gauge+number",
-                value=proba * 100,
-                number={"suffix": "%", "font": {"size": 48, "color": "#ffffff",
-                                                  "family": "JetBrains Mono"}},
+                mode="gauge+number", value=proba * 100,
+                number={"suffix": "%", "font": {"size": 48, "color": "#ffffff", "family": "JetBrains Mono"}},
                 gauge={
-                    "axis": {"range": [0, 100], "tickcolor": "#4444aa",
-                             "tickfont": {"color": "#4444aa", "size": 11}},
+                    "axis": {"range": [0, 100], "tickcolor": "#4444aa", "tickfont": {"color": "#4444aa", "size": 11}},
                     "bar": {"color": risk_color, "thickness": 0.25},
-                    "bgcolor": "#0f0f1a",
-                    "bordercolor": "#1e1e2e",
+                    "bgcolor": "#0f0f1a", "bordercolor": "#1e1e2e",
                     "steps": [
                         {"range": [0, 30], "color": "#0f1a14"},
                         {"range": [30, 60], "color": "#1a180a"},
                         {"range": [60, 100], "color": "#1a0a0a"},
                     ],
-                    "threshold": {"line": {"color": risk_color, "width": 3},
-                                  "thickness": 0.8, "value": proba * 100},
+                    "threshold": {"line": {"color": risk_color, "width": 3}, "thickness": 0.8, "value": proba * 100},
                 },
-                title={"text": "CHURN PROBABILITY", "font": {"color": "#6666aa",
-                                                              "size": 12, "family": "Inter"}},
+                title={"text": "CHURN PROBABILITY", "font": {"color": "#6666aa", "size": 12, "family": "Inter"}},
             ))
             fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
                               height=280, margin=dict(l=20, r=20, t=40, b=20))
@@ -781,10 +508,7 @@ elif "Predict" in page:
             """, unsafe_allow_html=True)
 
         with r3:
-            # Confidence bar
             low_p = max(0, (0.3 - proba) / 0.3) if proba < 0.3 else 0
-            med_p = max(0, min(1, (proba - 0.3) / 0.3)) if 0.3 <= proba < 0.6 else (1 if proba >= 0.6 else 0)
-            high_p = max(0, (proba - 0.6) / 0.4) if proba >= 0.6 else 0
 
             st.markdown(f"""
             <div style="background:#0f0f1a; border:1px solid #1e1e2e; border-radius:12px; padding:24px; margin-top:8px;">
@@ -827,7 +551,6 @@ elif "Predict" in page:
             </div>
             """, unsafe_allow_html=True)
 
-        # Feature contribution (approximate)
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("""
         <div class="section-header">
@@ -851,20 +574,19 @@ elif "Predict" in page:
         fig = go.Figure()
         colors = [RED if v > 0 else GREEN for v in factors.values()]
         fig.add_trace(go.Bar(
-            x=list(factors.values()), y=list(factors.keys()),
-            orientation="h", marker_color=colors,
+            x=list(factors.values()), y=list(factors.keys()), orientation="h", marker_color=colors,
             text=[f"{v:+.2f}" for v in factors.values()],
             textposition="outside", textfont=dict(color="#8888aa", size=11),
         ))
-        fig.update_layout(**PLOT_THEME, height=300,
-            xaxis_title="Impact on churn probability", yaxis_title="",
-            xaxis=dict(gridcolor="#1e1e2e", zeroline=True, zerolinecolor="#3a3a5e"))
+        fig.update_layout(**PLOT_THEME, height=300, xaxis_title="Impact on churn probability", yaxis_title="")
+        fig.update_xaxes(zeroline=True, zerolinecolor="#3a3a5e")
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 # PAGE: RETENTION LIST
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 elif "Retention" in page:
     st.markdown("""
     <div style="margin-bottom:32px;">
@@ -873,7 +595,6 @@ elif "Retention" in page:
     </div>
     """, unsafe_allow_html=True)
 
-    # Controls row
     ctrl1, ctrl2, ctrl3 = st.columns([2, 1, 1], gap="medium")
     with ctrl1:
         top_n = st.slider("Show top N at-risk customers", 10, 200, 50)
@@ -885,7 +606,6 @@ elif "Retention" in page:
     ranked = retention_df[retention_df["churn_probability"] >= min_prob]\
                 .sort_values(sort_by, ascending=False).head(top_n)
 
-    # Summary metrics
     m1, m2, m3, m4 = st.columns(4, gap="medium")
     m1.metric("Customers shown", f"{len(ranked):,}")
     m2.metric("Avg churn prob", f"{ranked['churn_probability'].mean():.1%}")
@@ -894,7 +614,6 @@ elif "Retention" in page:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Styled dataframe
     def color_prob(val):
         if val >= 0.8: return "color: #f87171; font-weight: 700;"
         elif val >= 0.6: return "color: #fbbf24; font-weight: 600;"
@@ -911,16 +630,11 @@ elif "Retention" in page:
 
     st.dataframe(styled, use_container_width=True, height=450)
 
-    # Download
     col_dl, _ = st.columns([1, 3])
     with col_dl:
         csv = ranked.to_csv(index=False).encode("utf-8")
-        st.download_button(
-            "⬇️ Download CSV", csv,
-            f"retention_priority_top{top_n}.csv", "text/csv"
-        )
+        st.download_button("⬇️ Download CSV", csv, f"retention_priority_top{top_n}.csv", "text/csv")
 
-    # Revenue waterfall
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("""
     <div class="section-header">
@@ -931,24 +645,20 @@ elif "Retention" in page:
 
     top30 = ranked.head(30)
     fig = go.Figure()
-    fig.add_trace(go.Bar(
-        x=top30["customer_id"], y=top30["expected_revenue_at_risk"],
-        name="Revenue at Risk", marker_color=RED, opacity=0.85,
-    ))
-    fig.add_trace(go.Bar(
-        x=top30["customer_id"], y=top30["campaign_expected_savings"],
-        name="Campaign Savings", marker_color=GREEN, opacity=0.85,
-    ))
-    fig.update_layout(**PLOT_THEME, height=280, barmode="group",
-                      xaxis_title="", yaxis_title="$ USD",
-                      xaxis=dict(showticklabels=False),
+    fig.add_trace(go.Bar(x=top30["customer_id"], y=top30["expected_revenue_at_risk"],
+        name="Revenue at Risk", marker_color=RED, opacity=0.85))
+    fig.add_trace(go.Bar(x=top30["customer_id"], y=top30["campaign_expected_savings"],
+        name="Campaign Savings", marker_color=GREEN, opacity=0.85))
+    fig.update_layout(**PLOT_THEME, height=280, barmode="group", xaxis_title="", yaxis_title="$ USD",
                       legend=dict(orientation="h", y=1.1, font=dict(color="#8888aa")))
+    fig.update_xaxes(showticklabels=False)
+    apply_theme(fig)
     st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 # PAGE: EDA & INSIGHTS
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 elif "EDA" in page:
     st.markdown("""
     <div style="margin-bottom:32px;">
@@ -962,32 +672,27 @@ elif "EDA" in page:
     with tab1:
         col1, col2 = st.columns(2, gap="medium")
         with col1:
-            # Monthly charges distribution
             fig = go.Figure()
             for val, color, name in [(0, CYAN, "Stayed"), (1, RED, "Churned")]:
-                fig.add_trace(go.Histogram(
-                    x=df[df["churn"] == val]["monthly_charges"], name=name,
-                    marker_color=color, opacity=0.7, nbinsx=30,
-                ))
+                fig.add_trace(go.Histogram(x=df[df["churn"] == val]["monthly_charges"], name=name,
+                    marker_color=color, opacity=0.7, nbinsx=30))
             fig.update_layout(**PLOT_THEME, barmode="overlay", height=260,
                               title="Monthly Charges Distribution", xaxis_title="$")
+            apply_theme(fig)
             st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
         with col2:
-            # Tenure distribution
             fig = go.Figure()
             for val, color, name in [(0, CYAN, "Stayed"), (1, RED, "Churned")]:
-                fig.add_trace(go.Histogram(
-                    x=df[df["churn"] == val]["tenure"], name=name,
-                    marker_color=color, opacity=0.7, nbinsx=30,
-                ))
+                fig.add_trace(go.Histogram(x=df[df["churn"] == val]["tenure"], name=name,
+                    marker_color=color, opacity=0.7, nbinsx=30))
             fig.update_layout(**PLOT_THEME, barmode="overlay", height=260,
                               title="Tenure Distribution", xaxis_title="Months")
+            apply_theme(fig)
             st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
         col3, col4 = st.columns(2, gap="medium")
         with col3:
-            # Internet service
             internet_labels = encoders["internet_service"].inverse_transform(df["internet_service"])
             is_data = pd.DataFrame({"internet": internet_labels, "churn": df["churn"]})
             is_agg = is_data.groupby(["internet", "churn"]).size().reset_index(name="count")
@@ -995,12 +700,11 @@ elif "EDA" in page:
             fig = px.bar(is_agg, x="internet", y="count", color="outcome",
                          color_discrete_map={"Stayed": CYAN, "Churned": RED},
                          barmode="group", title="Internet Service vs Churn")
-            fig.update_layout(**PLOT_THEME, height=260, showlegend=True,
-                              xaxis_title="", yaxis_title="")
+            fig.update_layout(**PLOT_THEME, height=260, showlegend=True, xaxis_title="", yaxis_title="")
+            apply_theme(fig)
             st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
         with col4:
-            # Support calls scatter
             fig = px.scatter(
                 df, x="tenure", y="monthly_charges",
                 color=df["churn"].map({0: "Stayed", 1: "Churned"}),
@@ -1010,6 +714,7 @@ elif "EDA" in page:
             )
             fig.update_traces(marker_size=4)
             fig.update_layout(**PLOT_THEME, height=260)
+            apply_theme(fig)
             st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     with tab2:
@@ -1019,57 +724,48 @@ elif "EDA" in page:
 
         fig = go.Figure(go.Heatmap(
             z=corr_matrix.values,
-            x=corr_matrix.columns.tolist(),
-            y=corr_matrix.columns.tolist(),
-            colorscale=[[0, "#06b6d4"], [0.5, "#1e1e2e"], [1, "#7c3aed"]],
-            zmid=0,
-            text=np.round(corr_matrix.values, 2),
-            texttemplate="%{text}",
+            x=corr_matrix.columns.tolist(), y=corr_matrix.columns.tolist(),
+            colorscale=[[0, "#06b6d4"], [0.5, "#1e1e2e"], [1, "#7c3aed"]], zmid=0,
+            text=np.round(corr_matrix.values, 2), texttemplate="%{text}",
             textfont={"size": 11, "color": "#ffffff"},
             hovertemplate="<b>%{x}</b> ↔ <b>%{y}</b><br>Correlation: %{z:.3f}<extra></extra>",
         ))
-        fig.update_layout(**PLOT_THEME, height=420, title="Feature Correlation Matrix",
-                          xaxis=dict(tickangle=-30))
+        fig.update_layout(**PLOT_THEME, height=420, title="Feature Correlation Matrix")
+        fig.update_xaxes(tickangle=-30)
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     with tab3:
         col1, col2 = st.columns(2, gap="medium")
         with col1:
-            # Sentiment distribution
             fig = go.Figure()
             for val, color, name in [(0, CYAN, "Stayed"), (1, RED, "Churned")]:
-                fig.add_trace(go.Violin(
-                    y=df[df["churn"] == val]["sentiment_polarity"],
-                    name=name, fillcolor=color, line_color=color,
-                    opacity=0.7, box_visible=True, meanline_visible=True,
-                ))
-            fig.update_layout(**PLOT_THEME, height=300,
-                              title="Sentiment Polarity vs Churn", yaxis_title="Sentiment")
+                fig.add_trace(go.Violin(y=df[df["churn"] == val]["sentiment_polarity"], name=name,
+                    fillcolor=color, line_color=color, opacity=0.7, box_visible=True, meanline_visible=True))
+            fig.update_layout(**PLOT_THEME, height=300, title="Sentiment Polarity vs Churn", yaxis_title="Sentiment")
+            apply_theme(fig)
             st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
         with col2:
-            # Frustration vs churn rate scatter
             bins = pd.cut(df["frustration_score"], bins=10)
             frust_agg = df.groupby(bins)["churn"].mean().reset_index()
             frust_agg["mid"] = frust_agg["frustration_score"].apply(lambda x: x.mid)
             fig = go.Figure()
             fig.add_trace(go.Scatter(
-                x=frust_agg["mid"], y=frust_agg["churn"],
-                mode="lines+markers",
-                line=dict(color=RED, width=2),
-                marker=dict(color=RED, size=8),
+                x=frust_agg["mid"], y=frust_agg["churn"], mode="lines+markers",
+                line=dict(color=RED, width=2), marker=dict(color=RED, size=8),
                 fill="tozeroy", fillcolor="rgba(239,68,68,0.1)",
             ))
-            fig.update_layout(**PLOT_THEME, height=300,
-                              title="Frustration Score → Churn Rate",
-                              xaxis_title="Frustration Score", yaxis_title="Churn Rate",
-                              yaxis=dict(tickformat=".0%", gridcolor="#1e1e2e"))
+            fig.update_layout(**PLOT_THEME, height=300, title="Frustration Score → Churn Rate",
+                              xaxis_title="Frustration Score", yaxis_title="Churn Rate")
+            fig.update_yaxes(tickformat=".0%")
+            apply_theme(fig)
             st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 # PAGE: MODEL ANALYTICS
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
 elif "Model" in page:
     st.markdown("""
     <div style="margin-bottom:32px;">
@@ -1078,14 +774,13 @@ elif "Model" in page:
     </div>
     """, unsafe_allow_html=True)
 
-    from sklearn.metrics import (roc_curve, precision_recall_curve, 
+    from sklearn.metrics import (roc_curve, precision_recall_curve,
                                   confusion_matrix, classification_report)
 
     y_true = df["churn"].values
     y_prob = churn_probs
     y_pred = (y_prob >= 0.5).astype(int)
 
-    # ROC + PR
     fpr, tpr, _ = roc_curve(y_true, y_prob)
     prec, rec, thresholds_pr = precision_recall_curve(y_true, y_prob)
     auc_roc = np.trapz(tpr, fpr)
@@ -1101,6 +796,7 @@ elif "Model" in page:
                                   line=dict(color="#3a3a5e", dash="dash"), name="Random"))
         fig.update_layout(**PLOT_THEME, height=320, title="ROC Curve",
                           xaxis_title="False Positive Rate", yaxis_title="True Positive Rate")
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     with col2:
@@ -1109,9 +805,9 @@ elif "Model" in page:
                                   line=dict(color=CYAN, width=2.5), name=f"PR (AUC={auc_pr:.3f})"))
         fig.update_layout(**PLOT_THEME, height=320, title="Precision-Recall Curve",
                           xaxis_title="Recall", yaxis_title="Precision")
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
-    # Confusion Matrix + Metrics
     col3, col4 = st.columns([1, 1], gap="medium")
 
     with col3:
@@ -1120,11 +816,11 @@ elif "Model" in page:
             z=cm, x=["Predicted: Stayed", "Predicted: Churned"],
             y=["Actual: Stayed", "Actual: Churned"],
             colorscale=[[0, "#0f0f1a"], [1, PURPLE]],
-            text=cm, texttemplate="<b>%{text}</b>",
-            textfont={"size": 20, "color": "#ffffff"},
+            text=cm, texttemplate="<b>%{text}</b>", textfont={"size": 20, "color": "#ffffff"},
             showscale=False,
         ))
         fig.update_layout(**PLOT_THEME, height=280, title="Confusion Matrix")
+        apply_theme(fig)
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     with col4:
@@ -1151,7 +847,6 @@ elif "Model" in page:
         </div>
         """, unsafe_allow_html=True)
 
-    # Threshold analysis
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("""
     <div class="section-header">
@@ -1170,34 +865,30 @@ elif "Model" in page:
         campaign_cost = targeted * 12
         saved_revenue = caught * 0.35 * 65 * 12
         net = saved_revenue - campaign_cost
-        t_data.append({"threshold": t, "targeted": targeted,
-                        "caught_churners": caught, "net_roi": net})
+        t_data.append({"threshold": t, "targeted": targeted, "caught_churners": caught, "net_roi": net})
     t_df = pd.DataFrame(t_data)
 
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     fig.add_trace(go.Scatter(x=t_df["threshold"], y=t_df["net_roi"],
                               name="Net ROI ($)", line=dict(color=GREEN, width=2.5),
-                              fill="tozeroy", fillcolor="rgba(16,185,129,0.1)"),
-                  secondary_y=False)
+                              fill="tozeroy", fillcolor="rgba(16,185,129,0.1)"), secondary_y=False)
     fig.add_trace(go.Scatter(x=t_df["threshold"], y=t_df["targeted"],
                               name="Customers Targeted", line=dict(color=CYAN, width=2, dash="dot")),
                   secondary_y=True)
-    fig.update_layout(**PLOT_THEME, height=300,
-                      xaxis_title="Decision Threshold",
+    fig.update_layout(**PLOT_THEME, height=300, xaxis_title="Decision Threshold",
                       legend=dict(orientation="h", y=1.1, font=dict(color="#8888aa")))
-    fig.update_yaxes(title_text="Net ROI ($)", secondary_y=False,
-                     gridcolor="#1e1e2e", tickfont=dict(color="#8888aa"))
-    fig.update_yaxes(title_text="Customers Targeted", secondary_y=True,
-                     tickfont=dict(color="#8888aa"))
+    fig.update_yaxes(title_text="Net ROI ($)", secondary_y=False)
+    fig.update_yaxes(title_text="Customers Targeted", secondary_y=True)
+    apply_theme(fig)
     st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     optimal_row = t_df.loc[t_df["net_roi"].idxmax()]
     st.markdown(f"""
     <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.2); border-radius:10px; padding:16px; margin-top:8px;">
         <span style="font-size:13px; color:#34d399; font-weight:600;">
-        ✅ Optimal threshold: <b style="font-family:'JetBrains Mono',monospace">{optimal_row['threshold']:.2f}</b> — 
-        targets <b>{int(optimal_row['targeted']):,}</b> customers, 
-        catches <b>{int(optimal_row['caught_churners']):,}</b> churners, 
+        ✅ Optimal threshold: <b style="font-family:'JetBrains Mono',monospace">{optimal_row['threshold']:.2f}</b> —
+        targets <b>{int(optimal_row['targeted']):,}</b> customers,
+        catches <b>{int(optimal_row['caught_churners']):,}</b> churners,
         net ROI: <b>${optimal_row['net_roi']:,.0f}</b>
         </span>
     </div>
